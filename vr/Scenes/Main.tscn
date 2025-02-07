@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2k1on0hnebku"]
+[gd_scene load_steps=8 format=3 uid="uid://b2k1on0hnebku"]
 
-[ext_resource type="Script" path="res://Scripts/XrPlayerController.cs" id="1_3fhit"]
-[ext_resource type="PackedScene" uid="uid://ckkik4kiyt3qr" path="res://Scenes/XR_PlayerController.tscn" id="2_4eols"]
+[ext_resource type="PackedScene" uid="uid://7wsixyncyj3l" path="res://Scenes/VoiceCommand.tscn" id="3_2cy07"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iu8kh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,7 +25,6 @@ material = SubResource("StandardMaterial3D_peol6")
 size = Vector3(20, 0.1, 20)
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_3fhit")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x1kg6")
@@ -43,4 +41,4 @@ shape = SubResource("BoxShape3D_pbwvg")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_2br3v")
 
-[node name="XR_Player" parent="." instance=ExtResource("2_4eols")]
+[node name="VoiceCommand" parent="." instance=ExtResource("3_2cy07")]

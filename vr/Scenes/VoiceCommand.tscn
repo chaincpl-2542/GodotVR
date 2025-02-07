@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://7wsixyncyj3l"]
+
+[ext_resource type="Script" path="res://Scripts/Microphone.cs" id="1_cf7q6"]
+[ext_resource type="Script" path="res://Scripts/SpeechRecognizer.cs" id="2_wv6de"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_yjhq0"]
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_wa7bo"]
+button_index = 1
+
+[sub_resource type="Shortcut" id="Shortcut_brj7k"]
+events = [SubResource("InputEventMouseButton_wa7bo")]
+
+[node name="VoiceCommand" type="Node3D"]
+script = ExtResource("2_wv6de")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamWAV_yjhq0")
+autoplay = true
+bus = &"Record"
+script = ExtResource("1_cf7q6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RecordButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+shortcut = SubResource("Shortcut_brj7k")
+text = "Record"
+
+[node name="PlayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SaveButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="StatusLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="Control/RecordButton" to="AudioStreamPlayer" method="OnRecordButtonPressed"]
